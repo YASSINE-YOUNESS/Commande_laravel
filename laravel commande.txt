@@ -1,0 +1,50 @@
+
+======== BACK TO DESKTOP =============
+
+cd ../../../
+
+
+
+======== CREATE NEW PROJECT =============
+
+composer create-project laravel/laravel:^9.0 test
+
+
+
+======== LOGIN =============
+
+composer require laravel/ui
+php artisan ui bootstrap --auth
+npm install
+npm run dev
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+
+=========== SendMail ==========
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=465
+MAIL_USERNAME=robertmahoneee@gmail.com
+MAIL_PASSWORD=zvpqfrrfaopooqmd
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS="robertmahoneee@gmail.com"
+MAIL_FROM_NAME="${APP_NAME}"
+
+
+
+
+========= Mail Markdow ==========
+
+php artisan make:mail MailBienvenue --markdown=emails.MailView
+
+
+
+========= Route Send Mail =========
+
+Route::get('/send', function () {
+    \Illuminate\Support\Facades\Mail::to('younesyassinee@gmail.com')
+        ->send(new \App\Mail\MailBienvenue());
+});
